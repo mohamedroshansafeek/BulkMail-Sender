@@ -4,10 +4,11 @@ const app = express()
 //Install NODEMAILER
 const nodemailer = require("nodemailer");
 const mongoose = require("mongoose")
+
 const PORT = process.env.PORT || 5000
 
 app.use(cors({
-  origin: ["http://localhost:5173","https://bulk-mail-sender-gamma.vercel.app"]
+  origin: "http://localhost:5173"
 }))
 app.use(express.json())
 
@@ -67,18 +68,65 @@ app.post("/sendmail",function(req,res){
 }).catch(function(error){
   console.log(error)
 })
-//   if(data.length > 0){
-//     console.log(data[0])
-//   }else{
-//     console.log("No documents found in bulkmail collection")
-//   }
-// }).catch(function(error){
-//     console.log(error)
-// })
+// //   if(data.length > 0){
+// //     console.log(data[0])
+// //   }else{
+// //     console.log("No documents found in bulkmail collection")
+// //   }
+// // }).catch(function(error){
+// //     console.log(error)
+// // })
  
-})
-
-
+ })
 app.listen(PORT,function(){
     console.log(`Server running on port ${PORT}`)
 })
+
+
+// app.post("/sendmail", async function (req, res) {
+//   try {
+//     const { msg, emailList } = req.body;
+//     console.log("📩 Incoming request:", msg, emailList);
+
+//     if (!msg || !emailList || emailList.length === 0) {
+//       console.log("⚠️ Missing data");
+//       return res.status(400).send("Message or email list missing");
+//     }
+
+//     const data = await credential.find();
+//     console.log("🔑 DB credentials:", data);
+
+//     if (!data || data.length === 0) {
+//       console.log("⚠️ No credentials in DB");
+//       return res.status(500).send("No credentials found in DB");
+//     }
+
+//     const user = data[0].toJSON().user;
+//     const pass = data[0].toJSON().pass;
+
+//     console.log("✅ Using account:", user);
+
+//     const transport = nodemailer.createTransport({
+//       service: "gmail",
+//       auth: { user, pass },
+//     });
+
+//     const sendMails = emailList.map((email) => {
+//       console.log("➡️ Sending to:", email);
+//       return transport.sendMail({
+//         from: user,
+//         to: email,
+//         subject: "A message from Bulk Mail App",
+//         text: msg,
+//       });
+//     });
+
+//     await Promise.all(sendMails);
+
+//     console.log("✅ All emails sent successfully!");
+//     return res.send(true);
+//   } catch (error) {
+//     console.error("❌ Error sending emails:", error);
+//     return res.status(500).send(false);
+//   }
+// });
