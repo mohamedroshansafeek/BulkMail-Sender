@@ -4,6 +4,7 @@ const app = express()
 //Install NODEMAILER
 const nodemailer = require("nodemailer");
 const mongoose = require("mongoose")
+const PORT = process.env.PORT || 5000
 
 app.use(cors())
 app.use(express.json())
@@ -75,6 +76,7 @@ app.post("/sendemail",function(req,res){
  
 })
 
-app.listen(5000,function(){
-    console.log("Server Started .....")
+
+app.listen(PORT,function(){
+    console.log(`Server running on port ${PORT}`)
 })
