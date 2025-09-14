@@ -7,7 +7,7 @@ const mongoose = require("mongoose")
 const PORT = process.env.PORT || 5000
 
 app.use(cors({
-  origin: "https://bulk-mail-sender-gamma.vercel.app"
+  origin: ["http://localhost:5173","https://bulk-mail-sender-gamma.vercel.app"]
 }))
 app.use(express.json())
 
@@ -19,7 +19,7 @@ mongoose.connect("mongodb+srv://safeek:safeek2004@cluster0.mhpx8vn.mongodb.net/p
 
 const credential = mongoose.model("credential",{},"bulkmail")
 
-app.post("/sendemail",function(req,res){
+app.post("/sendmail",function(req,res){
 
     var msg = req.body.msg
     var emailList = req.body.emailList
