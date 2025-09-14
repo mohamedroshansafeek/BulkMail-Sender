@@ -7,7 +7,7 @@ const mongoose = require("mongoose")
 const PORT = process.env.PORT || 5000
 
 app.use(cors({
-  origin: "https://bulk-mail-sender-gamma.vercel.app/"
+  origin: "https://bulk-mail-sender-gamma.vercel.app"
 }))
 app.use(express.json())
 
