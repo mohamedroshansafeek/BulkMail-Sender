@@ -6,7 +6,9 @@ const nodemailer = require("nodemailer");
 const mongoose = require("mongoose")
 const PORT = process.env.PORT || 5000
 
-app.use(cors())
+app.use(cors({
+  origin: "https://bulk-mail-sender-gamma.vercel.app/"
+}))
 app.use(express.json())
 
 mongoose.connect("mongodb+srv://safeek:safeek2004@cluster0.mhpx8vn.mongodb.net/passkey?retryWrites=true&w=majority&appName=Cluster0").then(function(){
