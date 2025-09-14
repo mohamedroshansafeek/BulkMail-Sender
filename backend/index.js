@@ -8,7 +8,7 @@ const mongoose = require("mongoose")
 const PORT = process.env.PORT || 5000
 
 app.use(cors({
-  origin: "http://localhost:5173"
+  origin: ["http://localhost:5173,https://bulk-mail-sender-rho.vercel.app"]
 }))
 app.use(express.json())
 
